@@ -19,12 +19,14 @@ if(command === 'add') {
     console.log(`Note created:`);
     console.log('--');
     console.log(`Title: ${argv.title}`);
-    console.log(`Body: ${argv.body}`); 
+    console.log(`Body: ${argv.body}`);
   }
 } else if (command === 'list') {
   notes.getAll();
 } else if (command === 'remove') {
-  notes.removeNote(argv.title);
+  var noteRemoved = notes.removeNote(argv.title);
+  var message = noteRemoved ? 'Note was removed' : 'Note not found'
+  console.log(message);
 } else if (command === 'read') {
   notes.getNote(argv.title);
 } else {
